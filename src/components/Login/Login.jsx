@@ -4,7 +4,9 @@ import Joi from 'joi';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
 export default function Login({saveUser}) {
+  
     let [user, setUser] = useState({
         email: "",
         password: ""
@@ -22,7 +24,7 @@ export default function Login({saveUser}) {
     }
 
     useEffect(() => {
-        console.log(user)
+  
     }, [user]);
 
     async function login(e) {
@@ -30,12 +32,13 @@ export default function Login({saveUser}) {
 
         if (validateUser()) {
             setIsLoading(true);
-            let { data } = await axios.post('https://route-movies-api.vercel.app/signin', user);
-            console.log(data);
+            let { data } = await axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin', user);
+           console.log(data)
             if(data.message == "success"){
                 localStorage.setItem('token',data.token)
                 saveUser();
                 navigate('/');
+                
                 setIsLoading(false);
                 setApiError(null);
             }else{
@@ -57,7 +60,7 @@ export default function Login({saveUser}) {
         });
 
         let validations = schema.validate(user, { abortEarly: false });
-        console.log(validations);
+
         if (validations.error) {
             setValidationError(validations.error.details);
             return false
@@ -67,10 +70,12 @@ export default function Login({saveUser}) {
     }
     return (
         <>
-            <div className="mx-3 mx-md-0">
+         <div className="background">
+         <div className="content-login">
+         <div className="mx-3 mx-md-0">
                 <div className="container pt-3 pb-5 bg-login">
                     <div className="mx-auto w-75">
-                        <h2 className="mt-5 mb-4">Login form</h2>
+                        <h2 className="mt-5 mb-4 login-color">Login form</h2>
                         {apiError && <div className="alert alert-danger">{apiError}</div>}
 
                         <form onSubmit={(e) => login(e)}>
@@ -90,10 +95,10 @@ export default function Login({saveUser}) {
                                </div>
                             </div>
                             <div className="text text-center mb-2 d-flex me-auto">
-                                <span class=" text-white">Not a member yet?</span>
+                                <span className=" logo">Not a member yet?</span>
                                 <Link  to="/register" className="text-decoration-none text-white fw-bold ms-2">Create Account</Link>
                                 </div>
-                            <button className="btn btn-info d-flex ms-auto  btn-bg ">
+                            <button className="btn btn-danger d-flex ms-auto  btn-bg ">
                                 {isLoading?<i className="fa fa-spinner fa-spin"></i>:"Login"}
                             </button>
 
@@ -102,6 +107,8 @@ export default function Login({saveUser}) {
 
                 </div>
             </div>
+         </div>
+         </div>
         </>
     )
 }

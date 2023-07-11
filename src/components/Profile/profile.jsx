@@ -10,8 +10,7 @@ export default function Profile({userData}) {
             <i className='fa-solid fa-user fa-10x'></i>
         </div>
         <div className="col-md-6 py-5">
-        <h4><span className='text-warning fw-bold'>user Name is :</span> {userData.first_name} {userData.last_name}</h4>
-        <h4><span className='text-warning fw-bold'>Email : </span>{userData.email}</h4>
+        <h4><span className='text-warning fw-bold'>user Name is :</span> {userData.name} </h4>
         </div>
        </div>
     </div>
