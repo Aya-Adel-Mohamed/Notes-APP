@@ -7,7 +7,7 @@ export default function Navbar(props) {
     <>
       <nav className="navbar navbar-expand-lg bg-nav py-3 navbar-dark bg-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand text-white fs-3 px-3" to="/"><i class="fa-solid fa-note-sticky me-3"></i>Notes</Link>
+          <Link className="navbar-brand text-white fs-3 px-3" to="/"><i className="fa-solid fa-note-sticky me-3"></i>Notes</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

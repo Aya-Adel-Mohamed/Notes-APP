@@ -33,7 +33,6 @@ export default function Login({saveUser}) {
         if (validateUser()) {
             setIsLoading(true);
             let { data } = await axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin', user);
-           console.log(data)
             if(data.message == "success"){
                 localStorage.setItem('token',data.token)
                 saveUser();

@@ -107,7 +107,7 @@ function Home() {
 
     //function to get Note ID
     function getNoteID(NoteIndex) {
-        console.log(notes[NoteIndex])
+
         document.querySelector('#exampleModal1 input').value = notes[NoteIndex].title
         document.querySelector('#exampleModal1 textarea').value = notes[NoteIndex].desc
         setNote({ ...note, 'title': notes[NoteIndex].title, "desc": notes[NoteIndex].desc, NoteID: notes[NoteIndex]._id })
@@ -118,7 +118,7 @@ function Home() {
     async function updateNote(e) {
         e.preventDefault();
         let { data } = await axios.put(baseUrl + "updateNote", note)
-        console.log(data);
+
         if (data.message == 'updated') {
             getAllNotes()
             Swal.fire(
@@ -195,7 +195,7 @@ function Home() {
                     {notes.map((note, index) => {
                         return (
                             <div key={index} className="col-md-4 my-4">
-                                <div class='sticky'></div>
+                                <div className='sticky'></div>
                                 <div className="note p-4">
                                     <h3 className="float-start">{note.title}</h3>
                                     <a onClick={() => { getNoteID(index) }} data-bs-toggle="modal" data-bs-target="#exampleModal1" ><i className="fas fa-edit float-end edit"></i></a>
